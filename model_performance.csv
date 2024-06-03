@@ -1,0 +1,9 @@
+Dataset,Model,Train Accuracy,Validation Accuracy,Test Accuracy
+data/CondMat.csv,GaussianNB,0.9943344585348052,0.9935134247475162,0.9946903139283466
+data/CondMat.csv,KNeigborsClassifier,0.9991241675029651,0.9988504803350029,0.9987683717875031
+data/CondMat.csv,AdaBoostClassifier,1.0,1.0,1.0
+data/CondMat.csv,BaggingClassifier,1.0,1.0,1.0
+data/GenRel.csv,GaussianNB,0.9721963631850059,0.9677899832433439,0.969843633655994
+data/GenRel.csv,KNeigborsClassifier,0.9984484577670204,0.9981381493204246,0.9988830975428146
+data/GenRel.csv,AdaBoostClassifier,1.0,1.0,1.0
+data/GenRel.csv,BaggingClassifier,1.0,1.0,1.0
