@@ -1,0 +1,21 @@
+Dataset,Model,Percentage of data in training,Train Accuracy,Test Accuracy
+data/GenRel.csv,Neural Network,0.1,98.10055865921787,98.51888626866906
+data/GenRel.csv,Neural Network,0.3,98.44836146971203,98.37765957446808
+data/GenRel.csv,Neural Network,0.5,97.9818290140006,97.95204051236223
+data/GenRel.csv,Neural Network,0.7,99.5797648811107,99.6524761077324
+data/GenRel.csv,Neural Network,0.9,96.49979313198179,96.57483246463143
+data/CondMat.csv,Neural Network,0.1,99.88504488723451,99.90876800311406
+data/CondMat.csv,Neural Network,0.3,97.65714807043153,97.49841647182102
+data/CondMat.csv,Neural Network,0.5,99.68798581156533,99.69127017144359
+data/CondMat.csv,Neural Network,0.7,98.43679131672374,98.4290041236361
+data/CondMat.csv,Neural Network,0.9,91.68993096736916,90.97925447479336
+data/ErdosRenyi.csv,Neural Network,0.1,89.37269372693727,87.5023912984067
+data/ErdosRenyi.csv,Neural Network,0.3,100.0,100.0
+data/ErdosRenyi.csv,Neural Network,0.5,93.41302636757183,93.9590712317985
+data/ErdosRenyi.csv,Neural Network,0.7,100.0,100.0
+data/ErdosRenyi.csv,Neural Network,0.9,99.97813610276032,99.877029021151
+data/BarabasiAlbert.csv,Neural Network,0.1,99.60573476702508,99.89248168206434
+data/BarabasiAlbert.csv,Neural Network,0.3,98.93667861409797,99.35490477165678
+data/BarabasiAlbert.csv,Neural Network,0.5,95.65622536018923,96.60956203856355
+data/BarabasiAlbert.csv,Neural Network,0.7,99.83615790282116,99.90443196750687
+data/BarabasiAlbert.csv,Neural Network,0.9,84.43311696069452,84.16338230025082
