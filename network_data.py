@@ -82,7 +82,10 @@ if __name__ == '__main__':
   print("Starting")
   start = time.time()
 
-  # graph = nx.erdos_renyi_graph(1000, 0.01)
+  # graph = nx.erdos_renyi_graph(2000, 0.01, directed=False)
+  # graph = nx.barabasi_albert_graph(2000, 7)
+  # graph = nx.barabasi_albert_graph
+  # nx.write_edgelist(graph, path='BarabasAlbert.txt', data=False)
   graph = nx.read_edgelist(path='CondMat-Network.txt', comments='#', create_using=nx.Graph(), nodetype=int)
   largest = max(nx.connected_components(graph), key=len)
   subgraph = graph.subgraph(largest)
