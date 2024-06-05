@@ -78,49 +78,45 @@ def calculate_for_non_existing_edge(subgraph, edge):
                                   friends_measure, shortest_path, link_exists]
 
 
-if __name__ == '__main__':
-  print("Starting")
-  start = time.time()
+start = time.time()
 
-  # graph = nx.erdos_renyi_graph(2000, 0.01, directed=False)
-  # graph = nx.barabasi_albert_graph(2000, 7)
-  # graph = nx.barabasi_albert_graph
-  # nx.write_edgelist(graph, path='BarabasAlbert.txt', data=False)
-  graph = nx.read_edgelist(path='CondMat-Network.txt', comments='#', create_using=nx.Graph(), nodetype=int)
-  largest = max(nx.connected_components(graph), key=len)
-  subgraph = graph.subgraph(largest)
-  print(f'Starting graph, number of nodes {graph.number_of_nodes()} number od edges {graph.number_of_edges()}')
-  print(f'Largest component, number of nodes {subgraph.number_of_nodes()} number od edges {subgraph.number_of_edges()}')
+# graph = nx.erdos_renyi_graph(2000, 0.01, directed=False)
+# graph = nx.barabasi_albert_graph(2000, 7)
+# graph = nx.barabasi_albert_graph
+# nx.write_edgelist(graph, path='BarabasAlbert.txt', data=False)
+graph = nx.read_edgelist(path='CondMat-Network.txt', comments='#', create_using=nx.Graph(), nodetype=int)
+largest = max(nx.connected_components(graph), key=len)
+subgraph = graph.subgraph(largest)
+print(f'Starting graph, number of nodes {graph.number_of_nodes()} number od edges {graph.number_of_edges()}')
+print(f'Largest component, number of nodes {subgraph.number_of_nodes()} number od edges {subgraph.number_of_edges()}')
 
-  data = pd.DataFrame(columns=['node_1', 'node_2', 'neighbours_1', 'neighbours_2', 'density_ego_with_node_1',
-                          'density_ego_without_node_1', 'density_ego_with_node_2', 'density_ego_without_node_2',
-                            'common_neigbhours', 'total_neigbhours', 'jaccard_coefficient', 'prefferential_attachment',
-                              'friends_measure', 'shortest_path', 'link_exists'])
-  results = None
-  with multiprocessing.Pool() as pool:
-      items = [(subgraph, edge) for edge in subgraph.edges()]
-      results = [pool.starmap(calculate_for_existing_edge, items)]
-      for result in results[0]:
-          data.loc[len(data.index)] = result
-  
-  print("Existing edges done")
-  items = []
-  nodes = list(subgraph.nodes())
-  for i in range(len(subgraph.edges())):
-      u = random.choice(nodes)
-      v = random.choice(nodes)
-      while subgraph.has_edge(u, v) or u == v or (u, v) in items or (v, u) in items:
-          u = random.choice(nodes)
-          v = random.choice(nodes)
-      items.append((u, v))
-  print('Prep done')    
+data = pd.DataFrame(columns=['node_1', 'node_2', 'neighbours_1', 'neighbours_2', 'density_ego_with_node_1',
+                        'density_ego_without_node_1', 'density_ego_with_node_2', 'density_ego_without_node_2',
+                          'common_neigbhours', 'total_neigbhours', 'jaccard_coefficient', 'prefferential_attachment',
+                            'friends_measure', 'shortest_path', 'link_exists'])
+results = None
+with multiprocessing.Pool() as pool:
+    items = [(subgraph, edge) for edge in subgraph.edges()]
+    results = [pool.starmap(calculate_for_existing_edge, items)]
+    for result in results[0]:
+        data.loc[len(data.index)] = result
 
-  with multiprocessing.Pool() as pool:
-      prep_items = [(subgraph, edge) for edge in items]
-      results = [pool.starmap(calculate_for_non_existing_edge, prep_items)]
-      for result in results[0]:
-          data.loc[len(data.index)] = result
+items = []
+nodes = list(subgraph.nodes())
+for i in range(len(subgraph.edges())):
+    u = random.choice(nodes)
+    v = random.choice(nodes)
+    while subgraph.has_edge(u, v) or u == v or (u, v) in items or (v, u) in items:
+        u = random.choice(nodes)
+        v = random.choice(nodes)
+    items.append((u, v))
+    
+with multiprocessing.Pool() as pool:
+    prep_items = [(subgraph, edge) for edge in items]
+    results = [pool.starmap(calculate_for_non_existing_edge, prep_items)]
+    for result in results[0]:
+        data.loc[len(data.index)] = result
 
-  data.to_csv('data/CondMat.csv', index=False)
-  end = time.time()
-  print("Time taken: ", end-start)
+data.to_csv('data/CondMat.csv', index=False)
+end = time.time()
+print("Time taken: ", end-start)
