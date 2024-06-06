@@ -16,3 +16,15 @@ Computationally Efficient Topological Features](https://citeseerx.ist.psu.edu/do
 3. [scikit-learn](https://scikit-learn.org/stable/)
 4. [seaborn](https://seaborn.pydata.org/)
 5. [pandas](https://pandas.pydata.org/)
+
+## Project structure explanation
+
+1. data folder - contains calculated features for the networks in a csv file for each networks
+2. networks folder - contains network files from which networks are created in the program
+3. neuralnetworks folder - contains save files of neural networks trained: NetworkName/NetworkName_[percentage_of_data_in_training]_chosen_features.pt
+4. performance folder - contains performances of models based on features used
+5. classification_models notebook - used for training every model except neural network
+6. network_data python script - used for calculating features from networks
+7. neural_network notebook - used for training a neural network
+8. report notebook - used for ploting performance data and conclusion
+
