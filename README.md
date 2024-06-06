@@ -1,9 +1,9 @@
-# Link prediction on real and generated social networks.
+# Link prediction on real and generated social networks
 
 ## Data used from:
 
 1. [Condense Matter collaboration network](https://snap.stanford.edu/data/ca-CondMat.html)
-2. [General Relativity and Quantum Cosmology collaboration network] (https://snap.stanford.edu/data/ca-GrQc.html)
+2. [General Relativity and Quantum Cosmology collaboration network](https://snap.stanford.edu/data/ca-GrQc.html)
 3. Generated networks are generated using netwrokX
 
 
