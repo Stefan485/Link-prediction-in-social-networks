@@ -1,7 +1,3 @@
-# Data used from
-# Condense Matter collaboration network: https://snap.stanford.edu/data/ca-CondMat.html
-# General Relativity and Quantum Cosmology collaboration network: https://snap.stanford.edu/data/ca-GrQc.html
-
 import multiprocessing
 import multiprocessing.dummy
 import networkx as nx
